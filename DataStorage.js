@@ -47,12 +47,12 @@
   DataStorage.prototype.getItem = function(_key) {
     return localStorage.getItem(this.prefix+_key);
   };
-  
+
   DataStorage.prototype.clear = function(_args) {
     _args = _args||{};
-    
+
     if(typeof _args.key==='undefined'){
-      var _regex = new RegExp( "^" + this.prefix );
+      var _regex = new RegExp( '^' + this.prefix );
       for( var _k in localStorage){
         var _match = _k.match(_regex);
         if( _match!==null ){
