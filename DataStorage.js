@@ -39,13 +39,23 @@
 
   }
 
-  DataStorage.prototype.setItem = function(_key,_value) {
-    localStorage.setItem(this.prefix+_key,JSON.stringify(_value));
+  DataStorage.prototype.setItem = function(_key,_value,_opts) {
+    _opts = _opts || {};
+    if( _opts.json === false ){
+      localStorage.setItem(this.prefix+_key,_value);
+    }else{
+      localStorage.setItem(this.prefix+_key,JSON.stringify(_value));
+    }
     return this;
   };
 
-  DataStorage.prototype.getItem = function(_key) {
-    return JSON.parse(localStorage.getItem(this.prefix+_key));
+  DataStorage.prototype.getItem = function(_key,_opts) {
+    _opts = _opts || {};
+    if( _opts.json === false ){
+      return localStorage.getItem(this.prefix+_key);
+    }else{
+      return JSON.parse(localStorage.getItem(this.prefix+_key)); 
+    }
   };
 
   DataStorage.prototype.clear = function(_args) {
