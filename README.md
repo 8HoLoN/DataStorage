@@ -3,7 +3,7 @@ A library for web storage
 
 ##Use
 >```javascript
-var storage = new DataStorage({prefix:'baz'});    // set a custom prefix
+var storage = new DataStorage({prefix:"baz"});    // set a custom prefix
 storage.setItem("foo","bar");
 storage.getItem("foo");                           // "bar"
 storage.clear({key:"foo"});                       // clear only the specified key
