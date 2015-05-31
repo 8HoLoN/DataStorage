@@ -12,5 +12,5 @@ storage.clear();                                  // clear all the keys
 >```javascript
 storage.setItem("foo",null);
 test2.getItem("foo");                             // null
-test2.getItem("b",{json:false});                  // "null"
+test2.getItem("foo",{json:false});                  // "null"
 
