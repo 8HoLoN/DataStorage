@@ -21,7 +21,10 @@
 
     this.prefixes=[];
     try{
-      this.prefixes = JSON.parse(localStorage.DataStoragePrefix);
+      var _prefixes = JSON.parse(localStorage.getItem('DataStoragePrefixes'));
+      if( _isArray(_prefixes) ){
+        this.prefixes = _prefixes;
+      }
     }catch(e){
     }
 
@@ -32,9 +35,9 @@
         break;
       }
     }
-    if( !_addedFlag ){
+    if( !_addedFlag ){// replace by if(this.prefixes.indexOf(this.prefix)==-1)
       this.prefixes.push(this.prefix);
-      localStorage.DataStoragePrefix = JSON.stringify(this.prefixes);
+      localStorage.DataStoragePrefixes = JSON.stringify(this.prefixes);
     }
 
   }
@@ -54,7 +57,7 @@
     if( _opts.json === false ){
       return localStorage.getItem(this.prefix+_key);
     }else{
-      return JSON.parse(localStorage.getItem(this.prefix+_key)); 
+      return JSON.parse(localStorage.getItem(this.prefix+_key));
     }
   };
 
@@ -77,6 +80,10 @@
   DataStorage.prototype.clearLocalStorage = function() {
     localStorage.clear();
   };
+
+  function _isArray(_o) {
+    return Object.prototype.toString.call(_o) === '[object Array]';
+  }
 
   _g.DataStorage = DataStorage;
 
