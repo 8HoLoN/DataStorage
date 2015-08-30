@@ -95,4 +95,4 @@
 
   _g.DataStorage = DataStorage;
 
-})(window);
+})(this);
