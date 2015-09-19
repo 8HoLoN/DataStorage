@@ -7,7 +7,7 @@
  * Copyright (c) 2011-2015 Alexandre REMY
  */
 ;(function(_g){
-
+  'use strict';
   function DataStorage(_args){
     _args=_args||{};
 
